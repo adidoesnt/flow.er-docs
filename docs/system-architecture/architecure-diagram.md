@@ -106,4 +106,32 @@ Due to the proposed implementation being microservices, it has a few cons:
 - The architecture is more difficult to develop quickly, as it requires more planning and coordination.
 - There are more technologies to learn, which can be overwhelming for new developers.
 
+#### ORM/ODM Selection
+
+For non-relational data, such as the user credentials, the proposed architecture uses [Mongoose](https://mongoosejs.com/).
+
+The benefits of using Mongoose are:
+
+- It abstracts away the complexity of the native MongoDB driver.
+- Using libraries like TypeGoose, it can generate TypeScript types for the MongoDB models and provide type-safety at the repository level.
+
+The drawbacks of using Mongoose are:
+
+- It is a third-party library, and not directly maintained by the creators of MongoDB. In rare cases, this may result in compatibility issues.
+- TypeGoose is not as mature as some other libraries, resulting in less community support.
+
+For relational data, such as the project, task, and notification data, the proposed architecture uses [Prisma](https://www.prisma.io/).
+
+The benefits of using Prisma are:
+
+- It abstracts away the complexity of the native PostgreSQL driver.
+- It provides a more intuitive API for interacting with the database.
+- It provides type-safety at the repository level.
+- It is a widely used library, with a large community and a lot of documentation.
+
+The drawbacks of using Prisma are:
+
+- It is a third-party library, and not directly maintained by the creators of PostgreSQL. In rare cases, this may result in compatibility issues.
+- It stores generated types in the Node Modules directory, and can cause the directory to bliat significantly.
+
 ## Conclusion
