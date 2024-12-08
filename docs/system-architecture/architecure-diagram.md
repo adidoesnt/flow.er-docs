@@ -18,7 +18,27 @@ The following diagram shows the current architecture of Flower's backend:
 
 ### Explaining the Architecture
 
-lorem ipsum
+The current architecture is a monolithic application, with a single backend service that handles all incoming requests. It handles the following:
+
+1. Authentication, authorisation, and role-based access control.
+2. CRUD operations for users, projects, tasks, and other entities.
+
+Clients interact with the backend service via REST APIs, which are implemented using [Express](https://expressjs.com/).
+
+The backend service interfaces with a [PostgreSQL](https://www.postgresql.org/) database to store user, project, and task information. Relational information between users, projects, tasks, and other entities is required, so PostgreSQL is a natural choice.
+
+The backend service interfaces with the database using [Knex](https://knexjs.org/), a popular SQL query builder for PostgreSQL.
+
+The benefits of using Knex are:
+
+- It is a lightweight, open-source library that is easy to use and integrate with other frameworks.
+- It is more flexible than ORMs as it allows for more customisation and control over the database queries.
+- It does not generate TypeScript types, resulting in less boilerplate code.
+
+The drawbacks of using Knex are:
+
+- It is a third-party library, and not directly maintained by the creators of PostgreSQL. Sometimes, this can result in compatibility issues.
+- It does not provide type-safety at the repository level.
 
 ### Pros and Cons
 
@@ -51,14 +71,14 @@ The following diagram shows the proposed architecture of Flower's backend:
 The proposed architecture splits existing backend service into **three** separate microservices:
 
 1. **User Service** - Purely responsible for authentication, authorisation, and role-based access control.
-   - The user service integrates with a [MongoDB](https://www.mongodb.com/) database to store user information. No relational information is required, so the more lightweight [MongoDB](https://www.mongodb.com/) is a natural choice.
+   - The user service integrates with a [MongoDB](https://www.mongodb.com/) database to store user information. No relational information is required, so the more lightweight MongoDB is a natural choice.
    - It interfaces with the database using [Mongoose](https://mongoosejs.com/), a popular ODM (Object Document Mapping) library for MongoDB.
 2. **Core Service** - Responsible for handling core functionality, such as CRUD operations for projects, tasks, and other entities.
-   - The core service interfaces with a [PostgreSQL](https://www.postgresql.org/) database to store project and task information. Realtional information between projects, tasks and other entities is required, so [PostgreSQL](https://www.postgresql.org/) is a natural choice.
+   - The core service interfaces with a [PostgreSQL](https://www.postgresql.org/) database to store project and task information. Realtional information between projects, tasks and other entities is required, so PostgreSQL is a natural choice.
    - It interfaces with the database using [Prisma](https://www.prisma.io/), a popular ORM (Object Relational Mapping) library for PostgreSQL.
 3. **Notification Service** - Responsible for sending notifications to users.
-   - The notification service interfaces with a [PostgreSQL](https://www.postgresql.org/) database to store notification information.
-   - It interfaces with the database using [Prisma](https://www.prisma.io/), a popular ORM (Object Relational Mapping) library for PostgreSQL.
+   - The notification service interfaces with a PostgreSQL database to store notification information.
+   - It interfaces with the database using Prisma.
 
 These microservices are all developed independently in TypeScript, and communicate with each other via [tRPC](https://trpc.io/). tRPC felt like a natural fit for the proposed architecture, as all services are TypeScript-based. Using tRPC:
 
@@ -92,20 +112,6 @@ Using a **gateway** service like this also has the following drawbacks:
 - The gateway service acts as a single point of failure, which can be challenging to manage.
 - Using a gateway in between the client and the microservices can result in additional latency and overhead.
 
-### Pros and Cons
-
-The pros of the proposed implementation are:
-
-- The architecture is modular, which makes it easier to develop new features or fix bugs.
-- The architecture is scalable, as each service can be developed independently and scaled as needed.
-- The architecture is easier to deliver in an efficient manner, as each service can be developed by a small, specialised team of developers.
-
-Due to the proposed implementation being microservices, it has a few cons:
-
-- The architecture is more complex than the current implementation, which can make it harder to understand.
-- The architecture is more difficult to develop quickly, as it requires more planning and coordination.
-- There are more technologies to learn, which can be overwhelming for new developers.
-
 #### ORM/ODM Selection
 
 For non-relational data, such as the user credentials, the proposed architecture uses [Mongoose](https://mongoosejs.com/).
@@ -134,4 +140,22 @@ The drawbacks of using Prisma are:
 - It is a third-party library, and not directly maintained by the creators of PostgreSQL. In rare cases, this may result in compatibility issues.
 - It stores generated types in the Node Modules directory, and can cause the directory to bliat significantly.
 
+### Pros and Cons
+
+The pros of the proposed implementation are:
+
+- The architecture is modular, which makes it easier to develop new features or fix bugs.
+- The architecture is scalable, as each service can be developed independently and scaled as needed.
+- The architecture is easier to deliver in an efficient manner, as each service can be developed by a small, specialised team of developers.
+
+Due to the proposed implementation being microservices, it has a few cons:
+
+- The architecture is more complex than the current implementation, which can make it harder to understand.
+- The architecture is more difficult to develop quickly, as it requires more planning and coordination.
+- There are more technologies to learn, which can be overwhelming for new developers.
+
 ## Conclusion
+
+Based on the analysis of both architectures, the current implementation is more suitable for an MVP due to its simplicity, ease of development and potentially quick delivery.
+
+However, project management applications are typically used by organisations of all sizes which reequires a scalable, reliablle and fault-tolerant system. Furthermore, project management applications have many features, with new features being introduced frequently. Considering all of this, the proposed architecture is more suitable for a larger-scale application due to its scalability and modularity.
