@@ -31,6 +31,7 @@ The technology stack is divided into three main parts:
 2. Database - The database selections include:
    - [PostgreSQL](https://www.postgresql.org/)
    - [MongoDB](https://www.mongodb.com/)
+   - [Redis](https://redis.io/)
 3. ORM/ODM - The object-relational mapping (ORM) and object-document mapping (ODM) libraries include:
    - [Prisma](https://www.prisma.io/)
    - [Mongoose](https://mongoosejs.com/)

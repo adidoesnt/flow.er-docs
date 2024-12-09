@@ -73,6 +73,7 @@ The proposed architecture splits existing backend service into **three** separat
 1. **User Service** - Purely responsible for authentication, authorisation, and role-based access control.
    - The user service integrates with a [MongoDB](https://www.mongodb.com/) database to store user information. No relational information is required, so the more lightweight MongoDB is a natural choice.
    - It interfaces with the database using [Mongoose](https://mongoosejs.com/), a popular ODM (Object Document Mapping) library for MongoDB.
+   - The user service also interfaces with a [Redis](https://redis.io/) cache to store tokens. It is a lightweight in-memory cache that makes easy to set expiry times on blacklisted tokens.
 2. **Core Service** - Responsible for handling core functionality, such as CRUD operations for projects, tasks, and other entities.
    - The core service interfaces with a [PostgreSQL](https://www.postgresql.org/) database to store project and task information. Realtional information between projects, tasks and other entities is required, so PostgreSQL is a natural choice.
    - It interfaces with the database using [Prisma](https://www.prisma.io/), a popular ORM (Object Relational Mapping) library for PostgreSQL.
