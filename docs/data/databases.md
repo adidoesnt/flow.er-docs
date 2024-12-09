@@ -24,4 +24,16 @@ The user table is a standalone table that stores user details. Since no relation
 
 ### Core Service
 
+The core service handles the platform's core functionality, such as CRUD operations for projects, tasks, and other entities.
+
+It has a number of tables, with each related to another in some way. Due to the relational nature of the data, a relational database (in this case, [PostgreSQL](https://www.postgresql.org/)) is used to store the data.
+
 ### Notification Service
+
+The notification service handles sending notifications to users when certain events occur. Like the user service, it is designed to be independently deployable and decoupled from other services. For this reason, the data is stored in a separate database.
+
+It has two tables, one for notifications and notification read statuses. Since the tables are related, a relational database (in this case, [PostgreSQL](https://www.postgresql.org/)) is used to store the data.
+
+## What's next?
+
+In the next section, we will look at diagrams that detail the database structure for both the current and proposed implementations of Flower.
