@@ -1090,3 +1090,97 @@ Get all comments under a todo
 ```
 
 ---
+
+## Comments
+
+### `PUT /comments/:id`
+
+Update a comment by its ID
+
+**Request Schema**
+
+```json
+{
+  "content": "string, optional"
+}
+```
+
+**Success Response Schema**
+
+```json
+{
+  "id": "number",
+  "todo": "number (todo_id)",
+  "author": "number (user_id)",
+  "content": "string",
+  "created_at": "timestamp",
+  "last_updated_at": "timestamp"
+}
+```
+
+**Success Response Example**
+
+```json
+{
+  "id": 1,
+  "todo": 1,
+  "author": 1,
+  "content": "todo1 comment",
+  "created_at": "2023-03-01T00:00:00.000Z",
+  "last_updated_at": "2023-03-01T00:00:00.000Z"
+}
+```
+
+**Error Response Schema**
+
+```json
+{
+  "error": "string"
+}
+```
+
+**Error Response Example**
+
+```json
+{
+  "error": "Unauthorised"
+}
+```
+
+### `DELETE /comments/:id`
+
+Delete a comment by its ID
+
+**Response Schema**
+
+```json
+{
+  "status": "string"
+}
+```
+
+**Success Response Example**
+
+```json
+{
+  "status": "OK"
+}
+```
+
+**Error Response Schema**
+
+```json
+{
+  "error": "string"
+}
+```
+
+**Error Response Example**
+
+```json
+{
+  "error": "Unauthorised"
+}
+```
+
+---
