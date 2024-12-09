@@ -67,6 +67,23 @@ The data models used in the current implementation are as follows:
 
 ## Proposed Implementation
 
-### Diagram
+### Diagrams
 
 ### Explaining the Data Models
+
+#### User Service
+
+The user service has a [MongoDB](https://www.mongodb.com/) database with a single collection called `users`. The attributes of the collection are as follows:
+
+1. `uuid`: This is the primary key for the user collection. It is a UUID.
+2. `username`: This is the username selected by the user. It is unique, in order to prevent confusion on the client-side.
+3. `password_hash`: This is a hashed password. We store a hash instead of the actual password to prevent the password from being exposed in the database.
+4. `created_at`: This is the date and time the user was created. This is auto-generated during insertion.
+5. `updated_at`: This is the date and time the user was last updated. This is auto-generated during insertion.
+
+Notice that unlike the current implementation, we do not store the role in the user table. This is for **two reasons**:
+
+1. We want keep the user service independently deployable and decoupled from the other services. The role information is particular to Flower, and thus we handle roles as part of the `onboardings` table in the `core` service.
+2. We want users to users to be able to have different roles in different projects, so it makes more sense to store the role information in the `onboardings` table of the `core` service.
+
+The user service also has a [Redis](https://redis.io/) cache that contains key-value pairs related to user tokens (JWTs).
