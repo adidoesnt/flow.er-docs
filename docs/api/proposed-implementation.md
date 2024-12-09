@@ -1406,7 +1406,7 @@ Create a new notification.
 {
   "title": "string",
   "content": "string",
-  "href": "string",
+  "href": "string"
 }
 ```
 
@@ -1416,7 +1416,7 @@ Create a new notification.
 {
   "title": "New comment",
   "content": "This is a new comment",
-  "href": "https://www.google.com",
+  "href": "https://www.google.com"
 }
 ```
 
@@ -1429,7 +1429,7 @@ Create a new notification.
   "content": "string",
   "href": "string",
   "createdAt": "string",
-  "updatedAt": "string",
+  "updatedAt": "string"
 }
 ```
 
@@ -1442,11 +1442,12 @@ Create a new notification.
   "content": "This is a new comment",
   "href": "https://www.google.com",
   "createdAt": "2023-01-01T00:00:00.000Z",
-  "updatedAt": "2023-01-01T00:00:00.000Z",
+  "updatedAt": "2023-01-01T00:00:00.000Z"
 }
 ```
 
 **Error Response Schema**
+
 ```json
 {
   "error": "string"
@@ -1477,7 +1478,43 @@ Get all notifications for a user.
     "content": "string",
     "href": "string",
     "createdAt": "string",
-    "updatedAt": "string",
+    "updatedAt": "string"
   }
 ]
+```
+
+### `POST /notifications/:id/status`
+
+Update the read status of a notification for a user. The UUID is taken from the JWT.
+
+**Request Schema**
+
+```json
+{
+  "read": "boolean"
+}
+```
+
+**Request Example**
+
+```json
+{
+  "read": true
+}
+```
+
+**Response Schema**
+
+```json
+{
+  "status": "string"
+}
+```
+
+**Response Example**
+
+```json
+{
+  "status": "OK"
+}
 ```
