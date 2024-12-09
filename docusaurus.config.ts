@@ -72,8 +72,24 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
+              label: 'Introduction',
               to: '/docs/intro',
+            },
+            {
+              label: 'Functionality',
+              to: '/docs/category/functionality',
+            },
+            {
+              label: 'Data',
+              to: '/docs/category/data',
+            },
+            {
+              label: 'Architecture',
+              to: '/docs/category/system-architecture',
+            },
+            {
+              label: 'API',
+              to: '/docs/category/api',
             },
           ],
         },
