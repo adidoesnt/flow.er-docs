@@ -61,6 +61,7 @@ Get all users
   {
     "id": "number",
     "username": "string",
+    "role": "string",
     "created_at": "timestamp",
     "last_updated_at": "timestamp"
   }
@@ -74,12 +75,14 @@ Get all users
   {
     "id": 1,
     "username": "user1",
+    "role": "user",
     "created_at": "2023-03-01T00:00:00.000Z",
     "last_updated_at": "2023-03-01T00:00:00.000Z"
   },
   {
     "id": 2,
     "username": "user2",
+    "role": "admin",
     "created_at": "2023-03-01T00:00:00.000Z",
     "last_updated_at": "2023-03-01T00:00:00.000Z"
   }
@@ -112,6 +115,7 @@ Get a user by their ID
 {
   "id": "number",
   "username": "string",
+  "role": "string",
   "created_at": "timestamp",
   "last_updated_at": "timestamp"
 }
@@ -123,6 +127,7 @@ Get a user by their ID
 {
   "id": 1,
   "username": "user1",
+  "role": "user",
   "created_at": "2023-03-01T00:00:00.000Z",
   "last_updated_at": "2023-03-01T00:00:00.000Z"
 }
@@ -153,7 +158,8 @@ Create a user
 ```json
 {
   "username": "string",
-  "password": "string"
+  "password": "string",
+  "role": "string, optional"
 }
 ```
 
@@ -162,7 +168,8 @@ Create a user
 ```json
 {
   "username": "user1",
-  "password": "password1"
+  "password": "password1",
+  "role": "user"
 }
 ```
 
@@ -172,6 +179,7 @@ Create a user
 {
   "id": "number",
   "username": "string",
+  "role": "string",
   "created_at": "timestamp",
   "last_updated_at": "timestamp"
 }
@@ -183,6 +191,7 @@ Create a user
 {
   "id": 1,
   "username": "user1",
+  "role": "user",
   "created_at": "2023-03-01T00:00:00.000Z",
   "last_updated_at": "2023-03-01T00:00:00.000Z"
 }
@@ -232,6 +241,7 @@ Log in a user
 {
   "id": "number",
   "username": "string",
+  "role": "string",
   "created_at": "timestamp",
   "last_updated_at": "timestamp"
 }
@@ -243,6 +253,7 @@ Log in a user
 {
   "id": 1,
   "username": "user1",
+  "role": "user",
   "created_at": "2023-03-01T00:00:00.000Z",
   "last_updated_at": "2023-03-01T00:00:00.000Z"
 }
@@ -309,7 +320,8 @@ Update a user by their ID
 ```json
 {
   "username": "string, optional",
-  "password": "string, optional"
+  "password": "string, optional",
+  "role": "string, optional"
 }
 ```
 
@@ -319,8 +331,21 @@ Update a user by their ID
 {
   "id": "number",
   "username": "string",
+  "role": "string",
   "created_at": "timestamp",
   "last_updated_at": "timestamp"
+}
+```
+
+**Success Response Example**
+
+```json
+{
+  "id": 1,
+  "username": "user1",
+  "role": "user",
+  "created_at": "2023-03-01T00:00:00.000Z",
+  "last_updated_at": "2023-03-01T00:00:00.000Z"
 }
 ```
 
@@ -631,6 +656,7 @@ Get all users assigned to a project
   {
     "id": "number",
     "username": "string",
+    "role": "string",
     "created_at": "timestamp",
     "last_updated_at": "timestamp"
   }
@@ -644,12 +670,14 @@ Get all users assigned to a project
   {
     "id": 1,
     "username": "user1",
+    "role": "user",
     "created_at": "2023-03-01T00:00:00.000Z",
     "last_updated_at": "2023-03-01T00:00:00.000Z"
   },
   {
     "id": 2,
     "username": "user2",
+    "role": "admin",
     "created_at": "2023-03-01T00:00:00.000Z",
     "last_updated_at": "2023-03-01T00:00:00.000Z"
   }
