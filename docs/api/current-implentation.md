@@ -817,3 +817,276 @@ Create a todo under a project
 ```
 
 ---
+
+## Todos
+
+### `GET /todos/:id`
+
+Get a todo by its ID
+
+**Success Response Schema**
+
+```json
+{
+  "id": "number",
+  "project": "number (project_id)",
+  "title": "string",
+  "description": "string",
+  "assignee": "number (user_id)",
+  "status": "string",
+  "created_at": "timestamp",
+  "last_updated_at": "timestamp"
+}
+```
+
+**Success Response Example**
+
+```json
+{
+  "id": 1,
+  "project": 1,
+  "title": "todo1",
+  "description": "todo1 description",
+  "assignee": 1,
+  "status": "to_do",
+  "created_at": "2023-03-01T00:00:00.000Z",
+  "last_updated_at": "2023-03-01T00:00:00.000Z"
+}
+```
+
+**Error Response Schema**
+
+```json
+{
+  "error": "string"
+}
+```
+
+**Error Response Example**
+
+```json
+{
+  "error": "Internal Server Error"
+}
+```
+
+### `PUT /todos/:id`
+
+Update a todo by its ID
+
+**Request Schema**
+
+```json
+{
+  "title": "string, optional",
+  "description": "string, optional",
+  "assignee": "number (user_id), optional",
+  "status": "string, optional"
+}
+```
+
+**Success Response Schema**
+
+```json
+{
+  "id": "number",
+  "project": "number (project_id)",
+  "title": "string",
+  "description": "string",
+  "assignee": "number (user_id)",
+  "status": "string",
+  "created_at": "timestamp",
+  "last_updated_at": "timestamp"
+}
+```
+
+**Success Response Example**
+
+```json
+{
+  "id": 1,
+  "project": 1,
+  "title": "todo1",
+  "description": "todo1 description",
+  "assignee": 1,
+  "status": "to_do",
+  "created_at": "2023-03-01T00:00:00.000Z",
+  "last_updated_at": "2023-03-01T00:00:00.000Z"
+}
+```
+
+**Error Response Schema**
+
+```json
+{
+  "error": "string"
+}
+```
+
+**Error Response Example**
+
+```json
+{
+  "error": "Unauthorised"
+}
+```
+
+### `DELETE /todos/:id`
+
+Delete a todo by its ID
+
+**Response Schema**
+
+```json
+{
+  "status": "string"
+}
+```
+
+**Success Response Example**
+
+```json
+{
+  "status": "OK"
+}
+```
+
+**Error Response Schema**
+
+```json
+{
+  "error": "string"
+}
+```
+
+**Error Response Example**
+
+```json
+{
+  "error": "Internal Server Error"
+}
+```
+
+### `POST /todos/:id/comments`
+
+Create a comment under a todo
+
+**Request Schema**
+
+```json
+{
+  "content": "string",
+  "author": "number (user_id)"
+}
+```
+
+**Request Example**
+
+```json
+{
+  "content": "todo1 comment",
+  "author": 1
+}
+```
+
+**Success Response Schema**
+
+```json
+{
+  "id": "number",
+  "todo": "number (todo_id)",
+  "author": "number (user_id)",
+  "content": "string",
+  "created_at": "timestamp",
+  "last_updated_at": "timestamp"
+}
+```
+
+**Success Response Example**
+
+```json
+{
+  "id": 1,
+  "todo": 1,
+  "author": 1,
+  "content": "todo1 comment",
+  "created_at": "2023-03-01T00:00:00.000Z",
+  "last_updated_at": "2023-03-01T00:00:00.000Z"
+}
+```
+
+**Error Response Schema**
+
+```json
+{
+  "error": "string"
+}
+```
+
+**Error Response Example**
+
+```json
+{
+  "error": "Unauthorised"
+}
+```
+
+### `GET /todos/:id/comments`
+
+Get all comments under a todo
+
+**Success Response Schema**
+
+```json
+[
+  {
+    "id": "number",
+    "todo": "number (todo_id)",
+    "author": "number (user_id)",
+    "content": "string",
+    "created_at": "timestamp",
+    "last_updated_at": "timestamp"
+  }
+]
+```
+
+**Success Response Example**
+
+```json
+[
+  {
+    "id": 1,
+    "todo": 1,
+    "author": 1,
+    "content": "todo1 comment",
+    "created_at": "2023-03-01T00:00:00.000Z",
+    "last_updated_at": "2023-03-01T00:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "todo": 1,
+    "author": 2,
+    "content": "todo1 comment 2",
+    "created_at": "2023-03-01T00:00:00.000Z",
+    "last_updated_at": "2023-03-01T00:00:00.000Z"
+  }
+]
+```
+
+**Error Response Schema**
+
+```json
+{
+  "error": "string"
+}
+```
+
+**Error Response Example**
+
+```json
+{
+  "error": "Unauthorised"
+}
+```
+
+---
