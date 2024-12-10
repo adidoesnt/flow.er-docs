@@ -91,6 +91,10 @@ const config: Config = {
               label: 'API',
               to: '/docs/category/api',
             },
+            {
+              label: 'Other',
+              to: '/docs/other',
+            },
           ],
         },
       ],
