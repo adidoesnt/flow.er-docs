@@ -60,13 +60,12 @@ Flower currently supports a range of functionality, pertaining to:
 5. As an **admin user** I want to be able to **delete a particular todo** so that I do **not track tasks that I do not need to**.
 6. As a **project member** I want to be able to **delete a todo created by me** so that I do **not track tasks that I do not need to**.
 7. As an **admin user** I want to be able to **create a comments under todos** so that I can **share relevant thoughts and information** with other users.
-8. As an **project user** I want to be able to **create a comments under todos in my project** so that I can **share relevant thoughts and information** with other users.
+8. As a **project member** I want to be able to **create a comments under todos in my project** so that I can **share relevant thoughts and information** with other users.
 9. As an **admin user** I want to be able to **view comments under todos** so that I can **see relevant thoughts and information** shared by other users.
-10. As an **project user** I want to be able to **view comments under todos in my project** so that I can **see relevant thoughts and information** shared by other users.
+10. As a **project member** I want to be able to **view comments under todos in my project** so that I can **see relevant thoughts and information** shared by other users.
 
 ### Comments
 
-1. As an **admin user**, I want to be able to **update a comment** so that I can **keep its details up to date**.
-2. As an **project user**, I want to be able to **update a comment authored by me** so that I can **keep its details up to date**.
-3. As an **admin user**, I want to be able to **delete a comment** so that I do **not share thoughts or information that I do not need to**.
-4. As an **project user**, I want to be able to **delete a comment authored by me** so that I do **not share thoughts or information that I do not need to**.
+1. As a **user**, I want to be able to **update a comment authored by me** so that I can **keep its details up to date**.
+2. As an **admin user**, I want to be able to **delete comments** so that I do **regulate infromation shared by other users**.
+3. As a **user**, I want to be able to **delete a comment authored by me** so that I do **not share thoughts or information that I do not need to**.
