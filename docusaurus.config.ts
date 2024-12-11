@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Flower',
-  tagline: 'A collaborative project managment platform to help your workflows blossom.',
+  tagline: 'A collaborative project management platform to help your workflows blossom.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -90,6 +90,10 @@ const config: Config = {
             {
               label: 'API',
               to: '/docs/category/api',
+            },
+            {
+              label: 'Other',
+              to: '/docs/other',
             },
           ],
         },
